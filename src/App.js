@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+
+import Logger from './components/Logger';
+import FoodList from './components/FoodList';
 
 class App extends Component {
   render() {
+    const { className } = this.props;
+    
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <div className={className}>
+        <h1>Foods</h1>
+        <FoodList />
+        <Logger />
+    </div>
     );
   }
 }
 
-export default App;
+export const StyledApp = styled(App)`
+  font-family: ${props => props.theme.font.face};
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  
+  h1 {
+    font-size: 3.5em;
+    font-weight: 300;
+    text-align: center;
+  }
+`;
+
+export default StyledApp;
